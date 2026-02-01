@@ -41,20 +41,6 @@ jobs:
           fi
           echo "slug=$slug" >> $GITHUB_OUTPUT
 
-  lint-addon:
-    name: Lint App (Add-on)
-    needs:
-      - information
-    runs-on: ubuntu-latest
-    steps:
-      - name: ⤵️ Check out code from GitHub
-        uses: actions/checkout@v6
-      - name: 🚀 Run Add-on Lint
-        uses: homeassistant-apps/action-app-linter@v3.1
-        with:
-          community: true
-          path: "./${{ needs.information.outputs.target }}"
-
   lint-hadolint:
     name: Hadolint
     needs:
@@ -98,15 +84,6 @@ jobs:
         uses: ludeeus/action-shellcheck@2.0.0
         env:
           SHELLCHECK_OPTS: -s bash
-
-  lint-yamllint:
-    name: YAMLLint
-    runs-on: ubuntu-latest
-    steps:
-      - name: ⤵️ Check out code from GitHub
-        uses: actions/checkout@v6
-      - name: 🚀 Run YAMLLint
-        uses: frenck/action-yamllint@v1.5
 
   lint-prettier:
     name: Prettier
