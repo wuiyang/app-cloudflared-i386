@@ -20,6 +20,9 @@ case "${BUILD_ARCH}" in
 "i386")
     cloudflared_arch="386"
     ;;
+"armv7")
+    cloudflared_arch="arm"
+    ;;
 *)
     cloudflared_arch="${BUILD_ARCH}"
     ;;
